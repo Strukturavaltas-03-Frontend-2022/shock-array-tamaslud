@@ -159,7 +159,17 @@ const findEmployeesFromMarketing = (employees=[{name: '', salary: 200000, dep: '
  * Ha szerepel benne a `gmail` részlet akkor gmail-esnek lehet venni.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
+const findGermanMigrants = (citizens=[{nation: 'German', email: 'franz@gmail.com', city: 'Budapest'}]) => {
+    const germanMigrants = [];
+    citizens.forEach(person => {
+        let isGerman = person.nation == 'German';
+        let isGmail = person.email.includes('gmail');
+        let isBudapest = person.city == 'Budapest';
+        isGerman && isGmail && isBudapest ? germanMigrants.push(person) : {};
+    });
+    return germanMigrants;
 
+}
 
 
 export {
@@ -169,8 +179,5 @@ export {
     findEvens,
     findHigherSalariedEmployees,
     findEmployeesFromMarketing,
-
-
-
-
+    findGermanMigrants,
 }
