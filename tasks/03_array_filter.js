@@ -40,7 +40,8 @@
  * @desc Ha segítség kell, nézd meg a példafüggvényt feljebb.
  */
 const fourCharFoods = (foods = ['milk', 'bread', 'apple']) => {
-    // 
+    //
+    return foods.filter(food => food.length === 4 );
 }
 
 /**
@@ -56,7 +57,8 @@ const fourCharFoods = (foods = ['milk', 'bread', 'apple']) => {
  * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
  */
 const findNamesWithA = (names = ['Bill', 'Anna', 'Andy']) => {
-    // 
+    //
+    return names.filter(item => item.toLowerCase().includes('a'));
 }
 
 /**
@@ -68,7 +70,8 @@ const findNamesWithA = (names = ['Bill', 'Anna', 'Andy']) => {
  * @returns {number[]} - azok az elemek amelyek 1.27-szerese nagyobb mint 100.
  */
 const findBigPrices = (prices=[75, 80, 56, 1245]) => {
-    // 
+    //
+    return prices.filter(item => item*1.27 > 100); 
 }
 
 /**
@@ -83,7 +86,9 @@ const findBigPrices = (prices=[75, 80, 56, 1245]) => {
  * Tehát ha a páratlan számokat keresed akkor a number % 2 nem lesz 0.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
-
+const filterOdds = (prices=[121, 41, 56, 1245]) => {
+    return prices.filter( item => item % 2);
+}
 
 
 /**
@@ -99,6 +104,9 @@ const findBigPrices = (prices=[75, 80, 56, 1245]) => {
  * évszámának a különbsége több mint 10.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
+const filterOldCars = (cars=[{man: 'Ford', year: 2000, type: 'fiesta'}]) => {
+    return cars.filter(car => ((new Date()).getFullYear()) - car.year > 10);
+}
 
 
 
@@ -114,6 +122,14 @@ const findBigPrices = (prices=[75, 80, 56, 1245]) => {
  * @desc a `bd` és `nation` kulcsokat kell vizsgálnod.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
+const findAdultCitizens = (citizens=[{id: '33DDffgz', bd: 1987, nation: 'Hungarian'}]) => {
+    
+    return citizens.filter(citizen => {
+        const isAdult = ((new Date()).getFullYear()) - citizen.bd > 18;
+        const isHungarian = citizen.nation === 'Hungarian';
+        return isAdult && isHungarian;
+    })
+}
 
 
 
@@ -128,6 +144,13 @@ const findBigPrices = (prices=[75, 80, 56, 1245]) => {
  * @desc a `kcal` és `type` kulcsokkal dolgozz, a `dessert` a jó típus.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
+const filterDietFoods = (dishes=[{id: 1, kcal: 101, type: 'dessert'}]) => {
+    return dishes.filter( dish => {
+        const isLowCal = dish.kcal < 100;
+        const isDessert = dish.type === 'dessert';
+        return isLowCal && isDessert;
+    })
+}
 
 
 
@@ -135,4 +158,8 @@ export {
     fourCharFoods,
     findNamesWithA,
     findBigPrices,
+    filterOdds,
+    filterOldCars,
+    findAdultCitizens,
+    filterDietFoods,
 }
