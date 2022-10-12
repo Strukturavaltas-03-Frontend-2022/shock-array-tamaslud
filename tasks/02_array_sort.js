@@ -33,7 +33,7 @@ function getSortedNamesArray(names = ['Ali', 'Géza', 'Botond']) {
  * @desc Ha segítség kell, nézd meg a példafüggvényt feljebb.
  */
 const sortFood = (food = ['milk', 'bread', 'apple']) => {
-    return;
+    return food.sort();
 }
 
 /**
@@ -44,7 +44,8 @@ const sortFood = (food = ['milk', 'bread', 'apple']) => {
  * @returns {string[]} - a string alapján rendezett tömb.
  */
 const sortNames = (names = ['Bill', 'Anna']) => {
-    // 
+    //
+    return names.sort();
 }
 
 /**
@@ -58,7 +59,7 @@ const sortNames = (names = ['Bill', 'Anna']) => {
  * Példa a callback függvényre: (a, b) => a - b
  */
 const sortVariousNumbers = (prices=[121, 41, 56, 1245]) => {
-    return prices.sort();
+    return prices.sort((a, b) => a - b);
 }
 
 /**
@@ -72,7 +73,8 @@ const sortVariousNumbers = (prices=[121, 41, 56, 1245]) => {
  * @desc most visszafelé kell rendezni, csökkenő sorrendbe.
  */
 const sortVariousNumbersDesc = (prices = [121, 41, 56, 1245]) => {
-    // 
+    //
+    return prices.sort((a, b) => b - a)
 }
 
 /**
@@ -87,7 +89,8 @@ const sortVariousNumbersDesc = (prices = [121, 41, 56, 1245]) => {
  * Példa callbackre: (string1, string2) => string1.localeCompare(string2)
  */
 const sortInternationalNames = (names = ['Árpád', 'Beáta', 'Örs', 'Zoltán']) => {
-    // 
+    //
+    return names.sort(new Intl.Collator('hu').compare);
 }
 
 /**
@@ -102,6 +105,7 @@ const sortInternationalNames = (names = ['Árpád', 'Beáta', 'Örs', 'Zoltán']
  */
 const sortInternationalUsers = (users = [{name: 'Ákos', age: 44, city: 'Bp'}]) => {
     // 
+    return users.sort( (a, b) => a.name.localeCompare(b.name) );
 }
 
 /**
@@ -114,6 +118,10 @@ const sortInternationalUsers = (users = [{name: 'Ákos', age: 44, city: 'Bp'}]) 
  * @returns {[Object]} - a városok alapján rendezett users tömb.
  * @desc EXPORTÁLD A FÜGGVÉNYT!
  */
+const sortInternationalUsersByCity = (users=[{name: 'Ákos', age: 44, city: 'Bp'}]) => {
+    return users.sort((a, b) => a.city.localeCompare(b.city));
+    
+}
 
 /**
  * 8. feladat
@@ -126,7 +134,10 @@ const sortInternationalUsers = (users = [{name: 'Ákos', age: 44, city: 'Bp'}]) 
  * @returns {[Object]} - az életkor alapján CSÖKKENŐ sorrendbe rendezett users tömb.
  * @desc EXPORTÁLD A FÜGGVÉNYT!
  */
-
+const sortInternationalUsersByAgeDesc = (users=[{name: 'Ákos', age: 44, city: 'Bp'}]) => {
+    return users.sort( (a, b) => b.age - a.age )
+    
+}
 
 
 
@@ -138,6 +149,6 @@ export {
     sortVariousNumbersDesc,
     sortInternationalNames,
     sortInternationalUsers,
-
-
+    sortInternationalUsersByCity,
+    sortInternationalUsersByAgeDesc,
 }
