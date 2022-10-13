@@ -42,7 +42,8 @@
  * karaktert amit nagybetűssé alakítottunk, majd a maradékot összefűztük vele.
  */
 const transformTitleCase = (foods = ['milk', 'bread', 'apple']) => {
-    // 
+    //
+    return foods.map(food => food.slice(0,1).toUpperCase() + food.slice(1).toLowerCase());
 }
 
 /**
@@ -59,7 +60,8 @@ const transformTitleCase = (foods = ['milk', 'bread', 'apple']) => {
  * megfelelő prefixumot.
  */
 const addNamePrefixToStudents = (students = [{lastName: 'Doe', gender: 'male'}]) => {
-    // 
+    // Vigyáztam :)
+    return students.map( el => el.gender === 'male' ? el = {lastName: `Mr. ${el.lastName}`, gender: el.gender}  : {lastName: `Ms. ${el.lastName}`, gender: el.gender})
 }
 
 /**
@@ -72,14 +74,16 @@ const addNamePrefixToStudents = (students = [{lastName: 'Doe', gender: 'male'}])
  * @returns {number[]} - az árak 1.3-szorosa.
  * @desc EXPORTÁLD A FÜGGVÉNYT!
  */
-
+const getSellPrices = ( prices=[75, 80, 56, 1245] ) => {
+    return prices.map( el => el*1.3);
+}
 
 
 /**
  * 4. feladat
  * @todo Pótold a hiányzó részeket!
  * @summary ArrowFunctionExpression, visszaad egy tömböt, amiben a tanulók  
- * teljes neve és viszgaeredménye található. 
+ * teljes neve és vizsgaeredménye található. 
  * Függvény neve: getStudentReports
  * @param {[Object]} [students=[{firstName: 'John', lastName: 'Doe', points: 20}]] students.
  * @returns {string[]} - eredmény `<firstName> <lastName>, points: <points>.`  
@@ -88,7 +92,9 @@ const addNamePrefixToStudents = (students = [{lastName: 'Doe', gender: 'male'}])
  * Template-literallal dolgozz.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
-
+const getStudentReports = (students=[{firstName: 'John', lastName: 'Doe', points: 20}]) => {
+    return students.map( el => `${el.firstName} ${el.lastName}, points: ${el.points}.`);
+}
 
 
 /**
@@ -149,4 +155,6 @@ const addNamePrefixToStudents = (students = [{lastName: 'Doe', gender: 'male'}])
 export {
     transformTitleCase,
     addNamePrefixToStudents,
+    getSellPrices,
+    getStudentReports,
 }
