@@ -108,11 +108,13 @@ const getStudentReports = (students=[{firstName: 'John', lastName: 'Doe', points
  * @param {[Object]} [students=[{firstName: 'John', points: 20}]] students.
  * @returns {Object[]} - student objektumok kiegészítve a result tulajdonsággal.
  * @desc két lépés, először hozzáadod a result tulajdonságot, utána visszaadod.
- * Ha bátor vagy és egy sorban akarod megoldani (nem muszály): 
+ * Ha bátor vagy és egy sorban akarod megoldani (nem muszáj): 
  * ({...student, result: student.points > 50 ? 'passing' : 'not passing'})
  * EXPORTÁLD A FÜGGVÉNYT!
  */
-
+const addStudentReports = ( students=[{firstName: 'John', points: 20}] ) => {
+    return students.map( el => ({...el, result: (el.points > 50 ? 'passing' : 'not passing') }))
+}
 
 
 /**
@@ -129,6 +131,12 @@ const getStudentReports = (students=[{firstName: 'John', lastName: 'Doe', points
  * @returns {[Object]} - az income-al kiegészített employee objektumok tömbje.
  * @desc EXPORTÁLD A FÜGGVÉNYT!
  */
+const addCorrectedIncome = (employees=[{name: 'Bob', salary: 200000, premium: 1000, corr: 0.2}]) => {
+    return employees.map( el => {
+        const calculatedIncome = (el.salary + el.premium) * (1 + el.corr);
+        return ({...el, income: calculatedIncome})
+    })
+}
 
 
 
@@ -149,6 +157,13 @@ const getStudentReports = (students=[{firstName: 'John', lastName: 'Doe', points
  * @desc neked a `kcal` és `type` kulcsokat kell vizsgálnod.
  * EXPORTÁLD A FÜGGVÉNYT!
  */
+const addDishPrices = (dishes=[{id: 1, kcal: 101, type: 'dessert'}]) => {
+    return dishes.map( el => {
+        const [basePrice, multiplier] = (el.type === 'dessert') ? [200, -1.5] : [25, 1];
+        const calculatedPrice = Math.round(basePrice + (el.kcal * multiplier));
+        return ({...el, price: calculatedPrice});
+    })
+}
 
 
 
@@ -157,4 +172,7 @@ export {
     addNamePrefixToStudents,
     getSellPrices,
     getStudentReports,
+    addStudentReports,
+    addCorrectedIncome,
+    addDishPrices,
 }
